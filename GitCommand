@@ -1,0 +1,55 @@
+git init
+    - git 저장소 생성
+git config --global user.name "내이름"
+    - 이름 등록 [1번 등록하면 이후엔 등록하지 않아도 됨]
+git config --global user.email "내메일주소"
+    - 이메일 등록 [1번 등록하면 이후엔 등록하지 않아도 됨]
+git status
+    - 현재 git 저장소에 남아있는 파일을 확인
+git add -A
+    - 모든 파일을 git 스토리지에 추가
+git commit -m (이름)
+    - 스토리지에 추가한 파일덩어리를 "이름"으로 묶어 git 에 저장
+git log
+    - 현재까지 저장된 파일덩어리목록 확인
+:q
+    - vi 에디터 실행중인 상황에서 빠져나올 수 있도록 도와줌
+:wq
+    - vi 에디터 저장
+git reset (돌아갈 일련번호6자리*) --hard
+    - 입력한 일련번호로 데이터 복원 [이후 작업된 파일덩어리 모두 날라감 - 과감한 방법]
+    * 일련번호 6자리 : git log를 통해 저장된 파일덩어리의 일련번호 중 6자리만 복사하여 실행
+git revert (취소할 일련번호6자리)
+    - 입력한 일련번호의 파일덩어리를 돌아갈 지점으로 만든 후 데이터 복원 - 신중한방법
+git branch
+    - 현재 git 에 저장된 브랜치명들을 확인
+git branch 브랜치명
+    - 현재 파일덩어리를 "브랜치명"으로 복사
+git checkout 브랜치명
+    - "브랜치명"으로 이동
+git checkout -b 브랜치명
+    - 현재 파일덩어리를 "브랜치명"으로 복사하고 "브랜치명"으로 이동
+git merge 브랜치명
+    - 현재 접속해 있는 브랜치에 "브랜치명"을 병합
+git log --graph --all --decorate
+    - 현재 브랜치의 모든 (병합된)내역을 확인
+git rebase 브랜치명
+    - 현재 접속해 있는 브랜치에 "브랜치명"을 재배치(병합보다 깔끔함)
+git branch -D 브랜치명
+    - "브랜치명" 삭제
+git remote add origin https://github.com/계정이름/저장소명.git
+    - origin이라는 이름의 github 저장소에 접근
+git push -u origin 브랜치명
+    - origin이라는 이름의 github 저장소에 파일을 업로드
+git clone https://github.com/계정이름/저장소명.git
+    - 해당 github 저장소에 등록된 파일을 모두 복사
+git fetch
+    - github에 등록된 변경사항을 읽어옴
+git pull origin 브랜치명
+    - origin이라는 이름의 github 저장소에 있는 "브랜치명"을 가져옴
+git push -d origin 브랜치명
+    - origin이라는 이름의 github 저장소에 있는 "브랜치명"을 삭제
+git branch -a
+    - 로컬과 원격의 브랜치를 모두 확인가능
+git checkout -b 브랜치명 원격명/브랜치명
+    - 브랜치명에 원격명/브랜치명의 내용을 복사후 브랜치명으로 이동
