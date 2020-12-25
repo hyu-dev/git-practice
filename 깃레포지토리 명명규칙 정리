@@ -1,0 +1,49 @@
+GIT branch 명명 규칙
+
+Master (Main Branch)
+Develop (Main Branch)
+Feature/<Issue_number> or <Feature_name> / <Short Description>
+Release/<version_number>
+Hotfix/<Issue_number> or Issue/<Issue_number>
+
+Master Branch
+    - Release(배포/출시) 할 수 있는 브랜치
+    : 최종 Release(배포) 이력을 관리하기 위한 최상위 브랜치로 배포 가능한 상태만 관리
+
+Develop Branch
+    - 다음 출시 버전을 개발하는 브랜치
+    : Master에서 분기되어 기능 개발을 위한 브랜치들을 병합하기 위해 사용
+      이 브랜치를 기반으로 개발을 진행
+      즉, 모든 기능이 추가되고 버그가 수정되어 배포 가능한 안정적인 상태라면 Develop 브랜치를 Master 브랜치에 병합
+
+Feature Branch
+    - 기능을 개발하는 브랜치 (Local)
+    : feature 브랜치는 새로운 기능 개발 및 버그 수정이 필요할 때마다 develop 브랜치로부터 분기
+      feature 브랜치에서의 작업은 기본적으로 공유할 필요가 없기 때문에 자신의 로컬 저장소에서 관리
+    
+    * 개발이 완료되면 develop 브랜치로 병합하여 다른 사람들과 공유
+        1. develop 브랜치에서 새로운 기능에 대한 feature 브랜치를 분기한다
+        2. 새로운 기능에 대한 작업을 수행한다
+        3. 작업이 끝나면 Local에서 개발한 feature 브랜치를 develop 브랜치에 병합한다
+        4. 더 이상 필요하지 않은 feature 브랜치는 삭제한다
+        5. 새로운 기능에 대한 feature 브랜치를 중앙 원격 저장소에 올린다
+
+Release Branch
+    - 이번 출시 버전을 준비하는 브랜치
+    : feature 브랜치에서 develop 브랜치로 배포가 진행되고 배포할 수 있는 시점이 되었을 때 release 브랜치를 생성
+      그 이후 테스트를 통해 최종 버그 수정이나 문서 추가 등 실질적으로 출시하기 직전에 하는 단계들을 위한 브랜치
+      버그 수정이 있다면 수정 후 develop 브랜치에 병합
+      기능에 대한 개발은 develop 이나 feature 에서 정리
+      모든 버그와 문서 수정이 완료되면 master로 병합, 버전 Tag를 부여하여 출시
+      배포를 준비하는 동안 release 브랜치가 변경되었을 수 있기 때문에 배포후 develop에 병합
+    
+    * ex) release/1.2
+        - 소프트웨어 번호 관리는 보통 SemVer (Semantic Versioning의 줄임말) 버전의 형식은 [Major].[Minor].[Patch]
+
+
+Hotfix Branch
+    - 출시 버전에서 발생한 버그를 수정하는 브랜치
+    : 배포했으나 갑작스럽게 수정해야하는 경우, hotfix 브랜치를 분기 후 고친 후 병합
+      Patch 버전(1.2.1)을 새롭게 변경
+      배포 후 다시 develop 병합
+    
